@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Welcome to the Dashboard</h2>
+    <p class="text-center">Choose a division to mark attendance:</p>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item text-center">
+                    <a href="{{ url_for('mark_attendance', division='A') }}" class="btn btn-primary w-100">Division A</a>
+                </li>
+                <li class="list-group-item text-center">
+                    <a href="{{ url_for('mark_attendance', division='B') }}" class="btn btn-primary w-100">Division B</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

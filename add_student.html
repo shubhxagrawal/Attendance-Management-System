@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add a New Student</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert alert-{{ messages[0][0] }} mt-3">
+            {{ messages[0][1] }}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="division" class="form-label">Division</label>
+        <select class="form-select" id="division" name="division" required>
+            <option value="" disabled selected>Select Division</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Student</button>
+</form>
+{% endblock %}

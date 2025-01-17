@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Attendance Report</h2>
+    <div class="accordion" id="attendanceAccordion">
+        {% for report in reports %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ loop.index }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="false" aria-controls="collapse{{ loop.index }}">
+                    {{ report.name }} ({{ report.division }})
+                </button>
+            </h2>
+            <div id="collapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#attendanceAccordion">
+                <div class="accordion-body">
+                    <ul class="list-group">
+                        {% for month_year, data in report.monthly_report.items() %}
+                        <li class="list-group-item">
+                            <strong>{{ month_year }}</strong>: Present {{ data.present }} days, Absent {{ data.absent }} days
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
